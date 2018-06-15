@@ -5,46 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context="cn.qssq666.voiceutiltest.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/tv_mp3"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="22dp"
             android:text="mp3" />
 
         <Button
             android:id="@+id/tv_amr"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:text="amr" />
 
         <Button
             android:id="@+id/tv_aac"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="18dp"
             android:text="aac" />
 
         <Button
             android:id="@+id/tv_wav"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="16dp"
             android:text="wav" />
 
         <Button
             android:id="@+id/tv_wav_mp3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="26dp"
             android:text="amr_mp3" />
     </LinearLayout>
 
@@ -56,16 +54,18 @@
         android:orientation="horizontal">
 
 
+        <cn.qssq666.voiceutiltest.UploadVoice
+            android:id="@+id/iv_voice"
+            android:layout_width="10dp"
+            android:layout_height="64dp"
+            android:src="@drawable/btn_quan_recordingbox"
+            android:visibility="visible" />
+
         <TextView
             android:id="@android:id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <cn.qssq666.voiceutiltest.UploadVoice
-            android:id="@+id/iv_voice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/btn_quan_recordingbox" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,15 +76,25 @@
 
         <Button
             android:id="@+id/btn_start"
+            style="@android:style/Widget.Holo.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="开始录音" />
 
         <Button
             android:id="@+id/btn_play"
+            style="@android:style/Widget.Holo.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="播放录音" />
+            android:text="扬声器播放" />
+
+        <Button
+            android:id="@+id/btn_play_receiver"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="听筒播放" />
 
     </LinearLayout>
 
@@ -94,4 +104,5 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="路径:" />
+
 </LinearLayout>

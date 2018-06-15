@@ -19,6 +19,8 @@ import cn.qssq666.voiceutil.record.RecordFactory;
 import cn.qssq666.voiceutil.record.RecordManagerI;
 import cn.qssq666.voiceutil.utils.MediaDirectoryUtils;
 
+import static cn.qssq666.voiceutiltest.R.id.btn_play_receiver;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecordManagerI recordManager;
@@ -32,6 +34,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvStart;
     MediaType mediaType = MediaType.MP3;
     private TextView tvPlay;
+    private TextView tvPlayReceiver;
+
+
+//    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+//    private static String[] PERMISSIONS_STORAGE = {
+//            "android.permission.READ_EXTERNAL_STORAGE",
+//            "android.permission.WRITE_EXTERNAL_STORAGE" };
+
+
+
+//    public static void verifyStoragePermissions(Activity activity) {
+//
+//        try {
+//            //检测是否有写的权限
+//            int permission = ActivityCompat.checkSelfPermission(activity,
+//                    "android.permission.WRITE_EXTERNAL_STORAGE");
+//            if (permission != PackageManager.PERMISSION_GRANTED) {
+//                // 没有写的权限，去申请写的权限，会弹出对话框
+//                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         tvTitle = ((TextView) findViewById(android.R.id.text1));
         tvPlay = ((TextView) findViewById(R.id.btn_play));
+        tvPlayReceiver = ((TextView) findViewById(btn_play_receiver));
         tvStart = ((TextView) findViewById(R.id.btn_start));
         tvPlay.setOnClickListener(this);
         tvStart.setOnClickListener(this);
@@ -97,23 +125,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (recordManager == null) {
 //                    recordManager = AudioManager.isErrorLoadSo() ? RecordFactory.getAAcRocrdInstance() : RecordFactory.getMp3RecordInstance();
 
-            switch (mediaType) {
-                case AAC:
-                    recordManager = RecordFactory.getAAcRocrdInstance();
-                    break;
-                case WAV:
-                    recordManager = RecordFactory.getWavRecordInstance();
-                    break;
-                case MP3:
-                    recordManager = RecordFactory.getMp3RecordInstance();
-                    break;
-                case WAV_TO_MP3:
-                    recordManager = RecordFactory.getWavRecordMp3OutInstance();
-                    break;
-                case AMR:
-                    recordManager = RecordFactory.getAmrRocrdInstance();
-                    break;
-            }
+//            switch (mediaType) {
+//                case AAC:
+//                    recordManager = RecordFactory.getAAcRocrdInstance();
+//                    break;
+//                case WAV:
+//                    recordManager = RecordFactory.getWavRecordInstance();
+//                    break;
+//                case MP3:
+//                    recordManager = RecordFactory.getMp3RecordInstance();
+//                    break;
+//                case WAV_TO_MP3:
+//                    recordManager = RecordFactory.getWavRecordMp3OutInstance();
+//                    break;
+//                case AMR:
+//                    recordManager = RecordFactory.getAmrRocrdInstance();
+//                    break;
+//            }
+            recordManager = RecordFactory.getWavRecordInstance();
+
             recordManager.setOnTimeSecondChanage(new RecordManagerI.OnTimeSecondChanage() {
                 @Override
                 public void onSecondChnage(int duration) {
@@ -201,13 +231,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btn_play:
+
                 if (mAudioFile == null || !mAudioFile.exists()) {
                     Toast.makeText(this, "文件出现错误,请重新录制!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-
+                Toast.makeText(this, "扬声器播放", Toast.LENGTH_SHORT).show();
                 PlayEngine.play(mAudioFile.getAbsolutePath(), ivVoice, new PlayEngine.PlayListener() {
+
 
                     @Override
                     public void onStart(boolean fromCache) {
@@ -225,6 +257,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
                 break;
+//            case R.id.btn_play_receiver:
+//                Toast.makeText(this, "听筒播放", Toast.LENGTH_SHORT).show();
+//                break;
+
             case R.id.tv_path:
                 copy(mAudioFile == null ? "" : mAudioFile.getAbsolutePath(), this);
                 Toast.makeText(this, "复制路径成功 ", Toast.LENGTH_SHORT).show();
