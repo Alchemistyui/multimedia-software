@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="720p"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:visibility="invisible" />
 
         <Chronometer
             android:id="@+id/textChrono"
@@ -85,7 +86,8 @@
                     android:adjustViewBounds="true"
                     android:maxHeight="60dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_camera_menu_switch"/>
+                    android:src="@mipmap/ic_camera_menu_switch"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -95,14 +97,14 @@
                 android:layout_weight="33"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/button_capture"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
                     android:maxHeight="80dp"
-                    android:scaleType="fitCenter"
-                    android:src="@mipmap/player_record"/>
+                    android:scaleType="fitStart"
+                    android:src="@mipmap/player_record" />
             </LinearLayout>
 
             <LinearLayout
@@ -111,6 +113,7 @@
                 android:layout_weight="33"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/buttonFlash"
                     android:layout_width="wrap_content"
@@ -118,7 +121,8 @@
                     android:adjustViewBounds="true"
                     android:maxHeight="60dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_flash_off_white"/>
+                    android:src="@mipmap/ic_flash_off_white"
+                    android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
 
