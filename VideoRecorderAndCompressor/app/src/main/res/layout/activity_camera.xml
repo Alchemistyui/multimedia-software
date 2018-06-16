@@ -104,7 +104,8 @@
                     android:layout_height="match_parent"
                     android:maxHeight="80dp"
                     android:scaleType="fitStart"
-                    android:src="@mipmap/player_record" />
+                    android:src="@mipmap/player_record"
+                    android:visibility="visible" />
             </LinearLayout>
 
             <LinearLayout
